@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+    puppetmaster:
+        build: ./puppetmaster
+    puppetclient:
+        build: ./puppetclient
+        links:
+            - puppetmaster
+        depends_on:
+            puppetmaster:
+                condition: service_healthy
